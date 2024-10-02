@@ -87,7 +87,7 @@ export const getMyUser = () => {
         return response.json();
     }
 
-    const { data:getUser, isError, isLoading, error } = useQuery("fetchUser", getUserRequest);
+    const { data:getUser, isLoading, error } = useQuery("fetchUser", getUserRequest);
 
     if (error) {
         toast.error(error.toString());
