@@ -8,7 +8,7 @@ import ProtectedRoute from "./auth/ProtectedRoute";
 const AppRoutes = () => {
     return (
         <Routes>
-            <Route path="/" element={<Layout><Homapage /></Layout>} />
+            <Route path="/" element={<Layout showHero><Homapage /></Layout>} />
             <Route path="/auth-callback" element={<AuthCallbackPage />} />
             <Route element={<ProtectedRoute />} >
                 <Route path="/user-profile" element={<Layout><UserProfilePage /></Layout>} />
