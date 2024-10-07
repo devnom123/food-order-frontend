@@ -5,6 +5,7 @@ import { z } from 'zod';
 import DetailsSection from './DetailsSection';
 import { Separator } from '@radix-ui/react-separator';
 import CuisineSection from './CuisineSection';
+import MenuSection from './MenuSection';
 
 const formSchema = z.object({
     name: z.string({
@@ -63,6 +64,7 @@ const ManageRestaurantForm = ({ onSave, isLoading }: Props) => {
                     <DetailsSection />
                     <Separator />
                     <CuisineSection />
+                    <MenuSection />
             </form>
         </Form>
     )
