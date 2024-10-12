@@ -6,6 +6,9 @@ import DetailsSection from './DetailsSection';
 import { Separator } from '@radix-ui/react-separator';
 import CuisineSection from './CuisineSection';
 import MenuSection from './MenuSection';
+import ImageSection from './ImageSection';
+import LoadingButton from '@/components/LoadingButton';
+import { Button } from '@/components/ui/button';
 
 const formSchema = z.object({
     name: z.string({
@@ -55,7 +58,20 @@ const ManageRestaurantForm = ({ onSave, isLoading }: Props) => {
     });
 
     const onSubmit = (data: RestaurantFormData) => {
-
+        const formData = new FormData();
+        formData.append("name", data.name);
+        formData.append("city", data.city);
+        formData.append("country", data.country);
+        //lowest unit of currency
+        formData.append("deliveryFee", (data.deliveryFee * 100).toString());
+        formData.append("estimatedDeliveryTime", data.estimatedDeliveryTime.toString());
+        data.cuisines.forEach((cuisine,index) => formData.append(`cuisines${index}`, cuisine));
+        data.menuItems.forEach((menuItem,index) => {
+            formData.append(`menuItems[${index}][name]`, JSON.stringify(menuItem.name));
+            formData.append(`menuItems[${index}][price]`, JSON.stringify(menuItem.price * 100));
+        });
+        formData.append("image", data.image);
+        onSave(formData);
     }
     return (
         <Form {...formData}>
@@ -65,6 +81,9 @@ const ManageRestaurantForm = ({ onSave, isLoading }: Props) => {
                     <Separator />
                     <CuisineSection />
                     <MenuSection />
+                    <Separator />
+                    <ImageSection />
+                    { isLoading ? <LoadingButton /> : <Button type="submit">Submit</Button> }
             </form>
         </Form>
     )
