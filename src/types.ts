@@ -27,3 +27,12 @@ export type MenuItem = {
     name: string;
     price: number;
 }
+
+export type RestaurantSearchResponse = {
+    data: Restaurant[];
+    meta: {
+        totalRestaurants: number;
+        totalPages: number;
+        currentPage: number;
+    }
+}

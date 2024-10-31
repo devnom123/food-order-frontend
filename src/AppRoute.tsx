@@ -1,10 +1,12 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { createBrowserRouter, Navigate, Route, RouterProvider, Routes } from "react-router-dom";
 import Layout from "./layouts/layout";
 import Homapage from "./pages/Homapage";
 import AuthCallbackPage from "./pages/AuthCallbackPage";
 import UserProfilePage from "./pages/UserProfilePage";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import RestaurantPage from "./pages/RestaurantPages";
+import SearchPage from "./pages/SearchPage";
+
 
 const AppRoutes = () => {
     return (
@@ -15,8 +17,10 @@ const AppRoutes = () => {
                 <Route path="/user-profile" element={<Layout><UserProfilePage /></Layout>} />
                 <Route path="/manage-restaurant" element={<Layout><RestaurantPage /></Layout>} />
             </Route>
+            <Route path="/search/:city" element={<Layout><SearchPage /></Layout>} />
             <Route path="*" element={<Navigate to="/" />} />
         </Routes>
+        // <RouterProvider router={router}/>
     );
 }
 
