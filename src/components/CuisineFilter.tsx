@@ -11,9 +11,7 @@ type Props = {
 }
 const CuisineFilter = ({
   onChange,
-  selectedCuisines,
-  isExpanded,
-  onExpandedClick
+  selectedCuisines
 }: Props) => {
   const handleCuisineChange = (event: ChangeEvent<HTMLInputElement>) => {
     const clickedCuisine = event.target.value

@@ -75,8 +75,6 @@ const SearchPage = () => {
         <CuisineFilter 
           onChange={setSelectedCuisines} 
           selectedCuisines={searchState.selectedCuisines || []} 
-          isExpanded={true} 
-          onExpandedClick={() => {}}
         />
       </div>
       <div id="main-content" className="flex flex-col gap-5">
